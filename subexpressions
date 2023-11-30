@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+int main() {
+    int a = 5;
+    int b = 3;
+    int c, d, e;
+
+    // Original expressions
+    c = a + b;
+    d = a * b;
+    e = c - d;
+
+    // Common subexpression elimination
+    int common = a + b;
+    c = common;
+    d = a * b;
+    e = c - d;
+
+    // Print results
+    printf("Original expressions:\n");
+    printf("c = a + b: %d\n", c);
+    printf("d = a * b: %d\n", d);
+    printf("e = c - d: %d\n", e);
+
+    printf("\nAfter common subexpression elimination:\n");
+    c = common;
+    d = a * b;
+    e = c - d;
+
+    // Print results after common subexpression elimination
+    printf("c = a + b: %d\n", c);
+    printf("d = a * b: %d\n", d);
+    printf("e = c - d: %d\n", e);
+
+    return 0;
+}
