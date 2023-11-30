@@ -1,0 +1,30 @@
+%{
+int tags;
+%}
+%%
+"<"[^>]*>  { tags++; printf("%s \n", yytext); }
+.|\n { }
+%%
+int yywrap(void) {
+return 1; }
+int main(void)
+{
+FILE *f;
+char file[10];
+printf("Enter File Name : ");
+scanf("%s",file);
+f = fopen(file,"r");
+yyin = f;
+yylex();
+printf("\n Number of html tags: %d",tags);
+fclose(yyin);  
+}
+
+INPUT:
+<body>
+     <h1>This is a header</h1>
+     <h2>This is a header</h2>
+     <h3>This is a header</h3>
+     <h6>This is a header</h6>
+     <a.href="https://www.google.com">CLICK ME!</a>
+<body>
