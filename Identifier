@@ -1,0 +1,38 @@
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+int valididentifier(const char *str)
+{
+	if(strlen(str)==0)
+	{
+		return 0;
+	}
+	 if (!(isalpha(str[0]) || str[0] == '_')) {
+        return 0; 
+    }
+    int length=strlen(str);
+    int i;
+for(i=1;i<length;i++)
+	{
+		if(!(isalnum(str[i]) || str[i]=='_'))
+		{
+			return 0;
+		}
+	}
+	return 1;
+}
+int main()
+{
+	char identifier[100];
+	printf("enter the input string:");
+	scanf("%s",&identifier);
+	if(valididentifier(identifier))
+	{
+		printf("valid");
+	}
+	else
+	{
+		printf("Not Valid");
+	}
+	return 0;
+}
