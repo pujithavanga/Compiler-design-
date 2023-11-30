@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+int main() {
+    char ch;
+    int spaceCount = 0;
+    int newlineCount = 0;
+
+    printf("Enter text. Press Ctrl+D (Ctrl+Z on Windows) to end input.\n");
+
+    // Read characters until the end of the file (Ctrl+D or Ctrl+Z)
+    while ((ch = getchar()) != EOF) {
+        if (ch == ' ' || ch == '\t') {
+            spaceCount++;
+        } else if (ch == '\n') {
+            newlineCount++;
+        }
+    }
+
+    printf("Number of whitespaces: %d\n", spaceCount);
+    printf("Number of newline characters: %d\n", newlineCount);
+
+    return 0;
+}
