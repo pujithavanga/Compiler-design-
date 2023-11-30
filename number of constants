@@ -1,0 +1,28 @@
+%{
+#include <stdio.h>
+int count = 0;
+%}
+
+DIGIT       [0-9] 
+NON_ZERO    [1-9] 
+INTEGER     {NON_ZERO}{DIGIT}* 
+FLOAT       ({DIGIT}+"."{DIGIT}+)|("."{DIGIT}+)|({DIGIT}+".") 
+
+%%
+
+{INTEGER}   { count++; }
+{FLOAT}     { count++; }
+
+.          
+
+%%
+
+int main() {
+    yylex();
+    printf("Number of constants: %d\n", count);
+    return 0;
+}
+int yywrap()
+{
+return 1;
+}
